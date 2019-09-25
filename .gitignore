@@ -1,0 +1,4 @@
+vendor
+.*.sw[pon]
+.DS_Store
+composer.lock

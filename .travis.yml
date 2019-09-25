@@ -1,0 +1,16 @@
+language: php
+
+php:
+    - '7.1'
+    - '7.2'
+    - '7.3'
+
+before_script:
+    - php -m
+    - composer require php-coveralls/php-coveralls:^2.1.0
+
+script:
+    - php vendor/bin/phpunit --coverage-clover clover.xml
+
+after_success:
+    - vendor/bin/php-coveralls --coverage_clover=clover.xml --json_path=coveralls-upload.json -v
