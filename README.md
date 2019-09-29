@@ -53,8 +53,17 @@ try {
 
 ## SQL-markup 规则
 
+## TODO
+- [ ] useNamedPlaceholder = false 支持
+- [ ] 根据 `driver_options` 判断是否支持 named placeholders
+
+## 协议
+
+[BSD-3-Clause](LICENSE)
 
 ## API 文档
+
+[TOC]
 
 ### Builder 类
 
@@ -350,10 +359,3 @@ final public static Bind::assertPDOParamType(int $type): void
 $type 为未定义的 PDO 参数绑定数据类型时抛出 \InvalidArgumentException 异常。
 
 ##### 使用示例
-
-## TODO
-- [ ] useNamedPlaceholder = false 支持
-- [ ] 根据 `driver_options` 判断是否支持 named placeholders
-
-## 协议
-
