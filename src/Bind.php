@@ -14,7 +14,7 @@ namespace Consatan\SQLBuilder;
 use PDO;
 use InvalidArgumentException;
 
-class Bind
+class Bind implements BindInterface
 {
     /** @var string */
     const NAMED_PLACEHOLDER_PATTERN = '/^:[a-zA-Z0-9_]+$/';
@@ -96,64 +96,33 @@ class Bind
         }
     }
 
-    /**
-     * Bind int values.
-     *
-     * @param  mixed ...$bind Bind values.
-     * @return Bind
-     * @throws \InvalidArgumentException If values invalid.
-     */
-    final public static function int(...$bind): Bind
+    /** {@inheritdoc} */
+    final public static function int(...$bind): BindInterface
     {
         return new self($bind, PDO::PARAM_INT);
     }
 
-    /**
-     * Bind string values.
-     *
-     * @param  mixed ...$bind Bind values.
-     * @return Bind
-     * @throws \InvalidArgumentException If values invalid.
-     */
-    final public static function str(...$bind): Bind
+    /** {@inheritdoc} */
+    final public static function str(...$bind): BindInterface
     {
         return new self($bind, PDO::PARAM_STR);
     }
 
-    /**
-     * Bind null values.
-     *
-     * @param  mixed $val
-     * @param  mixed ...$bind Bind values.
-     * @return Bind
-     * @throws \InvalidArgumentException If values invalid.
-     */
-    final public static function null($val = null, ...$bind): Bind
+    /** {@inheritdoc} */
+    final public static function null($val = null, ...$bind): BindInterface
     {
         array_unshift($bind, $val);
         return new self($bind, PDO::PARAM_NULL);
     }
 
-    /**
-     * Bind boolean values.
-     *
-     * @param  mixed ...$bind Bind values.
-     * @return Bind
-     * @throws \InvalidArgumentException If values invalid.
-     */
-    final public static function bool(...$bind): Bind
+    /** {@inheritdoc} */
+    final public static function bool(...$bind): BindInterface
     {
         return new self($bind, PDO::PARAM_BOOL);
     }
 
-    /**
-     * Bind SQL large object data values.
-     *
-     * @param  mixed ...$bind Bind values.
-     * @return Bind
-     * @throws \InvalidArgumentException If values invalid.
-     */
-    final public static function lob(...$bind): Bind
+    /** {@inheritdoc} */
+    final public static function lob(...$bind): BindInterface
     {
         return new self($bind, PDO::PARAM_LOB);
     }
