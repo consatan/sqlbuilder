@@ -21,7 +21,7 @@ composer require consatan/sqlbuilder
 ```php
 ```
 
-这个工具要解决的就是这类问题，如下
+这个工具要解决的就是这类问题，如下(具体见 [单元测试样例](tests/BuilderTest.php))
 
 ```php
 <?php
